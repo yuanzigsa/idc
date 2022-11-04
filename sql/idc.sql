@@ -5,13 +5,13 @@
  Source Server Type    : MySQL
  Source Server Version : 80030 (8.0.30)
  Source Host           : localhost:3306
- Source Schema         : erupt
+ Source Schema         : idc
 
  Target Server Type    : MySQL
  Target Server Version : 80030 (8.0.30)
  File Encoding         : 65001
 
- Date: 03/11/2022 15:49:09
+ Date: 04/11/2022 10:40:40
 */
 
 SET NAMES utf8mb4;
@@ -32,7 +32,7 @@ CREATE TABLE `e_dict`  (
   `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `UKf5wwh5osfukkeebw7h2yb4kmp`(`code` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '数据字典' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '数据字典' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of e_dict
@@ -57,7 +57,7 @@ CREATE TABLE `e_dict_item`  (
   UNIQUE INDEX `UKl0kiq8otpn3fvtlvarebt8xkh`(`code` ASC, `erupt_dict_id` ASC) USING BTREE,
   INDEX `FKrrbi2dt94rjd8sjt830m3w0a`(`erupt_dict_id` ASC) USING BTREE,
   CONSTRAINT `FKrrbi2dt94rjd8sjt830m3w0a` FOREIGN KEY (`erupt_dict_id`) REFERENCES `e_dict` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '字典项' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '字典项' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of e_dict_item
@@ -78,7 +78,7 @@ CREATE TABLE `e_generator_class`  (
   `remark` varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '简介',
   `table_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '表名',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '生成Erupt代码' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '生成Erupt代码' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of e_generator_class
@@ -104,7 +104,7 @@ CREATE TABLE `e_generator_field`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `FKslwo9qwwfbgif9mbbhg072s4i`(`class_id` ASC) USING BTREE,
   CONSTRAINT `FKslwo9qwwfbgif9mbbhg072s4i` FOREIGN KEY (`class_id`) REFERENCES `e_generator_class` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = 'Erupt字段信息' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = 'Erupt字段信息' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of e_generator_field
@@ -132,7 +132,7 @@ CREATE TABLE `e_job`  (
   `status` bit(1) NULL DEFAULT NULL COMMENT '任务状态',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `UK1fu1amroa8n5mma3q9tey7bu9`(`code` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '任务维护' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '任务维护' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of e_job
@@ -154,7 +154,7 @@ CREATE TABLE `e_job_log`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `FKcpe22rpge2e4mmuva8l9dtmx0`(`job_id` ASC) USING BTREE,
   CONSTRAINT `FKcpe22rpge2e4mmuva8l9dtmx0` FOREIGN KEY (`job_id`) REFERENCES `e_job` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '任务日志' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '任务日志' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of e_job_log
@@ -175,7 +175,7 @@ CREATE TABLE `e_job_mail`  (
   `status` bit(1) NULL DEFAULT NULL COMMENT '状态',
   `subject` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '主题',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '发送邮件' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '发送邮件' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of e_job_mail
@@ -196,7 +196,7 @@ CREATE TABLE `e_upms_login_log`  (
   `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `user_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '用户',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '登录日志' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '登录日志' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of e_upms_login_log
@@ -212,6 +212,7 @@ INSERT INTO `e_upms_login_log` VALUES (8, 'Chrome 10 106', 'Computer', '192.168.
 INSERT INTO `e_upms_login_log` VALUES (9, 'Chrome 10 106', 'Computer', '192.168.18.208', '2022-11-03 11:24:16', '0|0|0|内网IP|内网IP', 'Windows 10', 'uRITqOWteKumMN7v', 'erupt');
 INSERT INTO `e_upms_login_log` VALUES (10, 'Chrome 10 106', 'Computer', '192.168.18.208', '2022-11-03 14:05:03', '0|0|0|内网IP|内网IP', 'Windows 10', '0QXeg76GYqlHS5h0', 'erupt');
 INSERT INTO `e_upms_login_log` VALUES (11, 'Chrome 10 106', 'Computer', '192.168.18.208', '2022-11-03 14:15:05', '0|0|0|内网IP|内网IP', 'Windows 10', 'MtotRimvtpaQ8Afx', 'erupt');
+INSERT INTO `e_upms_login_log` VALUES (12, 'Chrome 10 106', 'Computer', '192.168.18.208', '2022-11-03 16:32:53', '0|0|0|内网IP|内网IP', 'Windows 10', 'JU7HvbHZmpFiN5TL', 'erupt');
 
 -- ----------------------------
 -- Table structure for e_upms_menu
@@ -236,7 +237,7 @@ CREATE TABLE `e_upms_menu`  (
   UNIQUE INDEX `UK95xpkppt33d2bka0g2d7rgwqt`(`code` ASC) USING BTREE,
   INDEX `FK5mkgea183mm02v7ic1pdwxy5s`(`parent_menu_id` ASC) USING BTREE,
   CONSTRAINT `FK5mkgea183mm02v7ic1pdwxy5s` FOREIGN KEY (`parent_menu_id`) REFERENCES `e_upms_menu` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 71 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '菜单管理' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 82 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '菜单管理' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of e_upms_menu
@@ -311,6 +312,17 @@ INSERT INTO `e_upms_menu` VALUES (67, NULL, '2022-11-03 14:09:58', NULL, NULL, '
 INSERT INTO `e_upms_menu` VALUES (68, NULL, '2022-11-03 14:09:58', NULL, NULL, 'WdLUGswa', NULL, '修改', NULL, 20, 1, 'button', 'student@EDIT', 66);
 INSERT INTO `e_upms_menu` VALUES (69, NULL, '2022-11-03 14:09:58', NULL, NULL, 'naoa8TBY', NULL, '删除', NULL, 30, 1, 'button', 'student@DELETE', 66);
 INSERT INTO `e_upms_menu` VALUES (70, NULL, '2022-11-03 14:09:58', NULL, NULL, 'xlFU5JCO', NULL, '详情', NULL, 40, 1, 'button', 'student@VIEW_DETAIL', 66);
+INSERT INTO `e_upms_menu` VALUES (71, NULL, '2022-11-03 16:32:27', NULL, NULL, 'magic-api', NULL, '接口配置', NULL, 50, 1, 'tpl', 'magic-api.ftl', NULL);
+INSERT INTO `e_upms_menu` VALUES (72, NULL, '2022-11-03 16:32:27', NULL, NULL, 'magic-api-function', NULL, '函数', NULL, 10, 1, 'button', 'ERUPT_MAGIC_FUNCTION', 71);
+INSERT INTO `e_upms_menu` VALUES (73, NULL, '2022-11-03 16:32:27', NULL, NULL, 'magic-api-datasource', NULL, '数据源', NULL, 20, 1, 'button', 'ERUPT_MAGIC_DATASOURCE', 71);
+INSERT INTO `e_upms_menu` VALUES (74, NULL, '2022-11-03 16:32:27', NULL, NULL, 'magic-api-save', NULL, '保存', NULL, 30, 1, 'button', 'ERUPT_MAGIC_SAVE', 71);
+INSERT INTO `e_upms_menu` VALUES (75, NULL, '2022-11-03 16:32:27', NULL, NULL, 'magic-api-view', NULL, '查看', NULL, 40, 1, 'button', 'ERUPT_MAGIC_VIEW', 71);
+INSERT INTO `e_upms_menu` VALUES (76, NULL, '2022-11-03 16:32:27', NULL, NULL, 'magic-api-delete', NULL, '删除', NULL, 50, 1, 'button', 'ERUPT_MAGIC_DELETE', 71);
+INSERT INTO `e_upms_menu` VALUES (77, NULL, '2022-11-03 16:32:27', NULL, NULL, 'magic-api-download', NULL, '导出', NULL, 60, 1, 'button', 'ERUPT_MAGIC_DOWNLOAD', 71);
+INSERT INTO `e_upms_menu` VALUES (78, NULL, '2022-11-03 16:32:27', NULL, NULL, 'magic-api-upload', NULL, '上传', NULL, 70, 1, 'button', 'ERUPT_MAGIC_UPLOAD', 71);
+INSERT INTO `e_upms_menu` VALUES (79, NULL, '2022-11-03 16:32:27', NULL, NULL, 'magic-api-push', NULL, '远程推送', NULL, 80, 1, 'button', 'ERUPT_MAGIC_PUSH', 71);
+INSERT INTO `e_upms_menu` VALUES (80, NULL, '2022-11-03 16:32:27', NULL, NULL, 'magic-api-lock', NULL, '锁定', NULL, 90, 1, 'button', 'ERUPT_MAGIC_LOCK', 71);
+INSERT INTO `e_upms_menu` VALUES (81, NULL, '2022-11-03 16:32:27', NULL, NULL, 'magic-api-unlock', NULL, '解锁', NULL, 100, 1, 'button', 'ERUPT_MAGIC_UNLOCK', 71);
 
 -- ----------------------------
 -- Table structure for e_upms_operate_log
@@ -330,7 +342,7 @@ CREATE TABLE `e_upms_operate_log`  (
   `status` bit(1) NULL DEFAULT NULL COMMENT '是否成功',
   `total_time` bigint NULL DEFAULT NULL COMMENT '请求耗时',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '操作日志' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '操作日志' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of e_upms_operate_log
@@ -354,7 +366,7 @@ CREATE TABLE `e_upms_org`  (
   UNIQUE INDEX `UKc2wj35ujq2m84uw59dx6wy3gj`(`code` ASC) USING BTREE,
   INDEX `FKtj7222kjnkt7pv9kfn9g8ck4h`(`parent_org_id` ASC) USING BTREE,
   CONSTRAINT `FKtj7222kjnkt7pv9kfn9g8ck4h` FOREIGN KEY (`parent_org_id`) REFERENCES `e_upms_org` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '组织维护' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '组织维护' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of e_upms_org
@@ -371,7 +383,7 @@ CREATE TABLE `e_upms_post`  (
   `weight` int NULL DEFAULT NULL COMMENT '岗位权重',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `UKltq5h3n5cyyk5nxtjhg9lhidg`(`code` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '岗位维护' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '岗位维护' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of e_upms_post
@@ -397,7 +409,7 @@ CREATE TABLE `e_upms_role`  (
   INDEX `FKbghup2p4f1x9eokeygyg8p658`(`update_user_id` ASC) USING BTREE,
   CONSTRAINT `FKad39xpgtpmhq0fp5newnabv1g` FOREIGN KEY (`create_user_id`) REFERENCES `e_upms_user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `FKbghup2p4f1x9eokeygyg8p658` FOREIGN KEY (`update_user_id`) REFERENCES `e_upms_user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '角色管理' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '角色管理' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of e_upms_role
@@ -414,7 +426,7 @@ CREATE TABLE `e_upms_role_menu`  (
   INDEX `FKr6bl403chgwjnb6jk0uqqd9x8`(`menu_id` ASC) USING BTREE,
   CONSTRAINT `FKgsdnakqsme4htxkiapwmf6tbi` FOREIGN KEY (`role_id`) REFERENCES `e_upms_role` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `FKr6bl403chgwjnb6jk0uqqd9x8` FOREIGN KEY (`menu_id`) REFERENCES `e_upms_menu` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of e_upms_role_menu
@@ -456,7 +468,7 @@ CREATE TABLE `e_upms_user`  (
   CONSTRAINT `FKct3f9stm4eti10401f7rbh5ey` FOREIGN KEY (`update_user_id`) REFERENCES `e_upms_user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `FKdvwfw4x66ahh1tavd69cnx4i0` FOREIGN KEY (`create_user_id`) REFERENCES `e_upms_user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `FKga0jd7sahnn1tv14mq4dy5kba` FOREIGN KEY (`erupt_menu_id`) REFERENCES `e_upms_menu` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户配置' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户配置' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of e_upms_user
@@ -474,7 +486,7 @@ CREATE TABLE `e_upms_user_role`  (
   INDEX `FKes2ylim5w3ej690ss84sb956x`(`user_id` ASC) USING BTREE,
   CONSTRAINT `FK3h4lekfh26f5f8b7by3ejges6` FOREIGN KEY (`role_id`) REFERENCES `e_upms_role` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `FKes2ylim5w3ej690ss84sb956x` FOREIGN KEY (`user_id`) REFERENCES `e_upms_user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of e_upms_user_role
@@ -489,7 +501,7 @@ CREATE TABLE `student_man`  (
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '姓名',
   `zhuangtai` bit(1) NULL DEFAULT NULL COMMENT '状态',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '学生列表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '学生列表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of student_man
